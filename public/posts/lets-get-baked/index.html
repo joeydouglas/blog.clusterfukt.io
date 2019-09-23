@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Don&#39;t Get Baked! :: clusterFukt — pitfalls of the cloud native journey</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Wait. You mean &amp;ldquo;cloud native&amp;rdquo; doesn&amp;rsquo;t mean getting baked? That&amp;rsquo;s totally up to you. Do your thang, but dont bake your config into the container image. The entire point of the containerizing your app is so that it&amp;rsquo;s reusable across any environment.
+Regardless of why a travesty like this might happen, you could find yourself in a situation where you have to deploy such an image. Lets say that you don&amp;rsquo;t have access to the repo with any of the code."/>
+<meta name="keywords" content="kubernetes, cluster, cloud native"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://blog.clusterfukt.io:8080/posts/lets-get-baked/" />
+
+
+<link rel="stylesheet" href="http://blog.clusterfukt.io:8080/assets/style.css">
+
+
+<link rel="stylesheet" href="http://blog.clusterfukt.io:8080/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.clusterfukt.io:8080/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="http://blog.clusterfukt.io:8080/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Don&#39;t Get Baked!"/>
+<meta name="twitter:description" content="Wait. You mean &ldquo;cloud native&rdquo; doesn&rsquo;t mean getting baked? That&rsquo;s totally up to you. Do your thang, but dont bake your config into the container image. The entire point of the containerizing your app is so that it&rsquo;s reusable across any environment.
+Regardless of why a travesty like this might happen, you could find yourself in a situation where you have to deploy such an image. Lets say that you don&rsquo;t have access to the repo with any of the code."/>
+
+
+
+<meta property="og:title" content="Don&#39;t Get Baked!" />
+<meta property="og:description" content="Wait. You mean &ldquo;cloud native&rdquo; doesn&rsquo;t mean getting baked? That&rsquo;s totally up to you. Do your thang, but dont bake your config into the container image. The entire point of the containerizing your app is so that it&rsquo;s reusable across any environment.
+Regardless of why a travesty like this might happen, you could find yourself in a situation where you have to deploy such an image. Lets say that you don&rsquo;t have access to the repo with any of the code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.clusterfukt.io:8080/posts/lets-get-baked/" />
+<meta property="article:published_time" content="2019-06-29T13:30:26-05:00"/>
+<meta property="article:modified_time" content="2019-06-29T13:30:26-05:00"/><meta property="og:site_name" content="clusterFukt" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">clusterFukt</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about/">About</a></li>
+        
+      
+        
+          <li><a href="/posts/">Posts</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about/">About</a></li>
+      
+    
+      
+        <li><a href="/posts/">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="post">
+    <h2 class="post-title"><a href="http://blog.clusterfukt.io:8080/posts/lets-get-baked/">Don&rsquo;t Get Baked!</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+            2019-06-29
+        </span>
+      
+      
+      
+    </div>
+
+    
+
+    
+      
+        <img src="http://blog.clusterfukt.io:8080/images/vape-cloud.jpg" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      
+
+<hr />
+
+<h2 id="wait-you-mean-cloud-native-doesn-t-mean-getting-baked">Wait. You mean &ldquo;cloud native&rdquo; doesn&rsquo;t mean getting baked?</h2>
+
+<p>That&rsquo;s totally up to you. Do your thang, but dont bake your config into the container image. The entire point of the containerizing your app is so that it&rsquo;s reusable across any environment.</p>
+
+<p>Regardless of why a travesty like this might happen, you could find yourself in a situation where you have to deploy such an image. Lets say that you don&rsquo;t have access to the repo with any of the code. Peculiar circumstances block you from reaching out to the creators of this majestic beast of a container and you have to make it work. Good times. Here are a few tricks you could use to assess the damage and override the baked in configuration so that the application will bow to your will.</p>
+
+<ol>
+<li>run the pod and exec into it.
+
+<ol>
+<li>hopefully it&rsquo;ll start so you can do this.</li>
+</ol></li>
+<li>initContainer
+
+<ol>
+<li>to copy a new entrypoint.sh</li>
+<li>set config to pull from env.</li>
+</ol></li>
+<li>Mount files to override what currently exist.</li>
+</ol>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="http://blog.clusterfukt.io:8080/posts/registry/">
+                <span class="button__icon">←</span>
+                <span class="button__text">My Registry Blew Up...Again</span>
+              </a>
+            </span>
+          
+          
+            <span class="button next">
+              <a href="http://blog.clusterfukt.io:8080/posts/first-post/">
+                <span class="button__text">First Post</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">clusterFukt</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="http://blog.clusterfukt.io:8080/assets/main.js"></script>
+<script src="http://blog.clusterfukt.io:8080/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>clusterFukt</title>
+    <link>http://blog.clusterfukt.io:8080/</link>
+    <description>Recent content on clusterFukt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Jun 2019 15:33:25 -0500</lastBuildDate>
+    
+	<atom:link href="http://blog.clusterfukt.io:8080/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Registry Blew Up...Again</title>
+      <link>http://blog.clusterfukt.io:8080/posts/registry/</link>
+      <pubDate>Sat, 29 Jun 2019 15:33:25 -0500</pubDate>
+      
+      <guid>http://blog.clusterfukt.io:8080/posts/registry/</guid>
+      <description> Damn dude, fix your shit already.  Out of space. Nginx ingress bug with HTML patch verb.  </description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t Get Baked!</title>
+      <link>http://blog.clusterfukt.io:8080/posts/lets-get-baked/</link>
+      <pubDate>Sat, 29 Jun 2019 13:30:26 -0500</pubDate>
+      
+      <guid>http://blog.clusterfukt.io:8080/posts/lets-get-baked/</guid>
+      <description>Wait. You mean &amp;ldquo;cloud native&amp;rdquo; doesn&amp;rsquo;t mean getting baked? That&amp;rsquo;s totally up to you. Do your thang, but dont bake your config into the container image. The entire point of the containerizing your app is so that it&amp;rsquo;s reusable across any environment.
+Regardless of why a travesty like this might happen, you could find yourself in a situation where you have to deploy such an image. Lets say that you don&amp;rsquo;t have access to the repo with any of the code.</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>http://blog.clusterfukt.io:8080/posts/first-post/</link>
+      <pubDate>Sat, 29 Jun 2019 13:17:16 -0500</pubDate>
+      
+      <guid>http://blog.clusterfukt.io:8080/posts/first-post/</guid>
+      <description> Is this truly markdown?  Just testing. Still testing. Eat a butt, this is only a test.  --- apiVersion: v1 kind: Pod metadata: name: rss-site labels: app: web spec: containers: - name: front-end image: nginx ports: - containerPort: 80 - name: rss-reader image: nickchase/rss-php-nginx:v1 ports: - containerPort: 88  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.clusterfukt.io:8080/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.clusterfukt.io:8080/about/</guid>
+      <description>About clusterFukt: This is a project I started to vent my frustrations as a Kubernetes cluster operator. In the process of documenting these events, I hope to understand them a bit more clearly and perhaps someone can learn something from the mistakes I and others around me have made.</description>
+    </item>
+    
+  </channel>
+</rss>

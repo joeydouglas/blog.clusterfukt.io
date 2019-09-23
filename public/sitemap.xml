@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/posts/registry/</loc>
+    <lastmod>2019-06-29T15:33:25-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/posts/</loc>
+    <lastmod>2019-06-29T15:33:25-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/</loc>
+    <lastmod>2019-06-29T15:33:25-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/posts/lets-get-baked/</loc>
+    <lastmod>2019-06-29T13:30:26-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/posts/first-post/</loc>
+    <lastmod>2019-06-29T13:17:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.clusterfukt.io:8080/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

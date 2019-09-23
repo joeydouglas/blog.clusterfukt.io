@@ -1,0 +1,42 @@
+baseURL: http://blog.clusterfukt.io:8080/
+languageCode: en-us
+theme: hello-friend
+paginate: 5
+copyright: ''
+
+params: 
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName: posts
+  # "dark" or "light"
+  defaultTheme: dark
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems: 2
+
+# params:
+languages:
+  en:
+    title: "clusterFukt"
+    subtitle: "pitfalls of the cloud native journey"
+    keywords: 'kubernetes, cluster, cloud native'
+    copyright: ""
+    menuMore: Show more
+    writtenBy: Joey Douglas
+    readMore: Read more
+    readOtherPosts: Other posts
+    newerPosts: Newer posts
+    olderPosts: Older posts
+    dateFormatSingle: 2006-01-02
+    dateFormatList: 2006-01-02
+    params:
+      logo:
+        logoText: "clusterFukt"
+        logoHomeLink: "/"
+
+menu:
+      main:
+      - identifier: about
+        name: About
+        url: /about/
+      - identifier: posts
+        name: Posts
+        url: /posts/
